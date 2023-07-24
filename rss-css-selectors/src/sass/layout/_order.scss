@@ -1,0 +1,195 @@
+@import '../utils/variables';
+@import '../utils/mixins';
+@import '../utils/keyframes';
+
+.table-section {
+  @include flex-center;
+  flex-direction: column;
+  gap: 30px;
+  min-width: 300px;
+  perspective: 300px;
+
+  .table-title {
+    margin: 0;
+    font-size: 3rem;
+    @media (max-width: 768px) {
+      text-align: center;
+      font-size: 2rem;
+    }
+  }
+
+  .table-wrapper {
+    position: relative;
+    width: 100%;
+    max-width: 600px;
+    transform-origin: bottom;
+    transform: rotateX(25deg);
+    perspective: 350px;
+
+    @media (max-width: 768px) {
+      width: 90%;
+    }
+
+    .table-top {
+      position: absolute;
+      @include width-height(100%, 100%);
+      box-shadow: -3px 20px 20px 17px rgba(0, 0, 0, 0.2);
+      background: linear-gradient(#dc9625,#ca881f);
+    }
+
+    .table-bot {
+      position: absolute;
+      bottom: -15px;
+      @include width-height(100%, 15px);
+      background-color: #9b6818;
+      transform: rotateX(-35deg);
+      transform-origin: top;
+
+      .table-leg {
+        position: absolute;
+        top: 15px;
+        @include width-height(30px, 15px);
+        background-color: #6a4509;
+        &:first-child {
+          left: 15px;
+        }
+        &:last-child {
+          right: 15px;
+        }
+      }
+    }
+  }
+}
+
+.table {
+  position: relative;
+  @include flex-center;
+  gap: 20px;
+  padding: 15px 10px 25px;
+
+  menu,
+  doner,
+  donut,
+  steak,
+  coffee,
+  dessert,
+  plate,
+  cocktail,
+  hamburger,
+  waiter,
+  pizza,
+  bill
+   {
+    position: relative;
+    @include width-height(100px, 100px);
+    border-radius: 50px;
+    background-image: url('../../assets/svg/menu.svg');
+    background-size: cover;
+    transition: 0.3s;
+    @media (max-width: 668px) {
+      @include width-height(70px, 70px);
+    }
+
+    &.vanished {
+      animation: vanishing 0.5s ease forwards;
+    }
+    &.hovered {
+      box-shadow: 1px 2px 3px 5px rgba(255, 255, 255, 0.3);
+    }
+  }
+
+  menu {
+    @include width-height(120px, 100px);
+    background-size: 150px 100px;
+    background-repeat: no-repeat;
+  }
+
+  doner {
+    background-image: url('../../assets/svg/doner.svg');
+  }
+
+  donut {
+    background-image: url('../../assets/svg/donut.svg');
+  }
+
+  steak {
+    background-image: url('../../assets/svg/stake.svg');
+  }
+
+  coffee {
+    background-image: url('../../assets/svg/coffee.svg');
+
+    &.tea {
+      background-image: url('../../assets/svg/tea-coffee.svg');
+    }
+  }
+
+  dessert {
+    background-image: url('../../assets/svg/dessert.svg');
+  }
+
+  plate {
+    background-image: url('../../assets/svg/plate.svg');
+  }
+
+  cocktail {
+    background-image: url('../../assets/svg/cocktail.svg');
+  }
+
+  bill {
+    background-image: url('../../assets/svg/bill.svg');
+  }
+
+  waiter {
+    background-image: url('../../assets/svg/waiter.svg');
+
+    &.with-bottle {
+      background-image: url('../../assets/svg/waiter-with-bottle.svg');
+    }
+    &.with-mustache {
+      background-image: url('../../assets/svg/waiter-with-mustache.svg');
+    }
+    &.dog {
+      background-image: url('../../assets/svg/waiter-dog.svg');
+    }
+  }
+
+  hamburger,
+  pizza {
+    @include width-height(60px, 60px);
+    background-image: url('../../assets/svg/hamburger.svg');
+    transition: 0.3s;
+    
+    &.small {
+      @include width-height(30px, 30px);
+      
+      &:only-child {
+        top: calc(50% - 15px);
+        left: calc(50% - 15px)
+      }
+    }
+    
+    &.hovered {
+      scale: 1.2;
+    }
+  }
+  pizza {
+    background-image: url('../../assets/svg/pizza.svg');
+  }
+
+plate > hamburger,
+plate > pizza {
+  top: calc(50% - 35px);
+}
+
+plate hamburger,
+plate pizza {
+  position: absolute;
+  left: calc(50% - 30px)
+}
+
+.wiggle {
+  transform-origin: bottom;
+  animation: wiggle 5s ease-out infinite;
+  animation-delay: 0s, .5s;
+}}

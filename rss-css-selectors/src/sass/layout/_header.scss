@@ -1,0 +1,37 @@
+@import '../utils/_keyframes';
+@import '../utils/mixins';
+
+.header {
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  width: calc(100% - 230px);
+  padding: $padding-header;
+
+  @media (max-width: 768px) {
+    width: 94%;
+  }
+
+  @media (max-width: 600px) {
+    width: 90%;
+  }
+
+  .logo-wrapper {
+    @include flex-align-center;
+    gap: 5px;
+    .logo {
+      @include width-height(20px, 20px);
+      opacity: 0.3;
+      transition: 0.3s;
+      &:hover {
+        scale: 1.2;
+        opacity: 1;
+        animation: wiggle 3s infinite;
+      }
+    }
+    .logo-title {
+      font-size: 1.1rem;
+      user-select: none;
+    }
+  }
+}
